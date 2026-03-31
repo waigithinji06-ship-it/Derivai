@@ -260,31 +260,31 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-ui);font-size
 .err-dismiss:hover{color:var(--red);}
 </style>
 <body>
-<div id="pgLogin" style="display:flex;align-items:center;justify-content:center;background:#0a0f1e;position:fixed;inset:0;z-index:9999;overflow-y:auto;">
-  <div style="width:100%;max-width:400px;padding:20px;">
+<div id="pgLogin" style="display:flex;align-items:center;justify-content:center;background:#0a0f1e;position:fixed;inset:0;z-index:9999;overflow-y:auto;padding:20px;box-sizing:border-box;">
+  <div style="width:100%;max-width:380px;">
     <div style="text-align:center;margin-bottom:24px;">
-      <div style="font-size:24px;font-weight:700;color:#f1f5f9;letter-spacing:-.5px;">Deriv<span style="color:#38bdf8;">AI</span></div>
-      <div style="font-size:10px;color:#475569;letter-spacing:2px;margin-top:4px;">LIVE ANALYSIS &middot; AI ENGINE</div>
+      <div style="font-size:26px;font-weight:700;color:#f1f5f9;">Deriv<span style="color:#38bdf8;">AI</span></div>
+      <div style="font-size:10px;color:#475569;letter-spacing:2px;margin-top:6px;">LIVE ANALYSIS &middot; AI ENGINE</div>
     </div>
     <div style="background:#151d2e;border:1px solid #1f2d45;border-radius:16px;padding:24px;">
-      <div style="font-size:9px;color:#475569;letter-spacing:1px;margin-bottom:12px;">HOW TO GET YOUR API TOKEN</div>
-      <div style="font-size:12px;color:#94a3b8;line-height:2;margin-bottom:16px;">
+      <div style="font-size:9px;color:#475569;letter-spacing:1px;margin-bottom:14px;">HOW TO GET YOUR API TOKEN</div>
+      <div style="font-size:12px;color:#94a3b8;line-height:2;margin-bottom:18px;">
         1. Go to <strong style="color:#38bdf8;">app.deriv.com</strong> &rarr; Account Settings<br>
-        2. Click <strong style="color:#f1f5f9;">API Token</strong> in the left menu<br>
+        2. Click <strong style="color:#f1f5f9;">API Token</strong> in left menu<br>
         3. Create token with <strong style="color:#f1f5f9;">Read + Trade</strong> scope<br>
         4. Copy and paste below
       </div>
-      <div id="LE" style="display:none;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:8px;padding:10px 12px;margin-bottom:12px;color:#ef4444;font-size:11px;"></div>
+      <div id="LE" style="display:none;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);border-radius:8px;padding:10px 12px;margin-bottom:12px;color:#ef4444;font-size:12px;"></div>
       <div style="position:relative;margin-bottom:8px;">
-        <input id="tokenInput" type="password" placeholder="Paste your API token here..." style="width:100%;background:#111827;border:1px solid #1f2d45;border-radius:9px;padding:12px 44px 12px 12px;font-size:12px;color:#f1f5f9;outline:none;-webkit-appearance:none;box-sizing:border-box;" onkeydown="if(event.key==='Enter'){document.getElementById('loginBtn').click();}"/>
-        <button type="button" onclick="var i=document.getElementById('tokenInput');i.type=i.type==='password'?'text':'password';" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:#475569;cursor:pointer;font-size:16px;padding:4px;">&#128065;</button>
+        <input id="tokenInput" type="password" placeholder="Paste your API token here..." style="width:100%;padding:12px 44px 12px 12px;background:#111827;border:1px solid #1f2d45;border-radius:9px;color:#f1f5f9;font-size:13px;outline:none;-webkit-appearance:none;box-sizing:border-box;" onkeydown="if(event.key==='Enter')loginGo();"/>
+        <button type="button" onclick="var i=document.getElementById('tokenInput');i.type=i.type==='password'?'text':'password';" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:#475569;cursor:pointer;font-size:16px;">&#128065;</button>
       </div>
       <div style="font-size:10px;color:#475569;text-align:center;margin-bottom:16px;">Token sent only to Deriv WebSocket &middot; Never stored</div>
-      <button id="loginBtn" type="button" style="width:100%;padding:13px;background:#ef4444;border:none;border-radius:9px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:12px;box-sizing:border-box;" onclick="loginGo()">&#128308; CONNECT TO DERIV</button>
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><div style="flex:1;height:1px;background:#1f2d45;"></div><span style="color:#475569;font-size:10px;">or</span><div style="flex:1;height:1px;background:#1f2d45;"></div></div>
-      <button type="button" style="width:100%;padding:11px;background:transparent;border:1px solid #1f2d45;border-radius:9px;color:#94a3b8;font-size:12px;cursor:pointer;box-sizing:border-box;" onclick="guestGo()">Continue without token (analysis only)</button>
+      <button id="loginBtn" type="button" onclick="loginGo()" style="width:100%;padding:13px;background:#ef4444;border:none;border-radius:9px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:12px;box-sizing:border-box;">&#128308; CONNECT TO DERIV</button>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;"><div style="flex:1;height:1px;background:#1f2d45;"></div><span style="color:#475569;font-size:11px;">or</span><div style="flex:1;height:1px;background:#1f2d45;"></div></div>
+      <button type="button" onclick="guestGo()" style="width:100%;padding:11px;background:transparent;border:1px solid #1f2d45;border-radius:9px;color:#94a3b8;font-size:12px;cursor:pointer;box-sizing:border-box;">Continue without token (analysis only)</button>
     </div>
-    <div style="text-align:center;margin-top:14px;font-size:10px;color:#475569;">Not financial advice &middot; Use a valid token &middot; Use demo account first</div>
+    <div style="text-align:center;margin-top:14px;font-size:10px;color:#475569;">Not financial advice &middot; Use demo account first</div>
   </div>
 </div>
 <div id="appShell" style="display:none;flex-direction:column;height:100dvh;overflow:hidden;position:fixed;inset:0;">
@@ -1532,7 +1532,7 @@ IDX.forEach(i=>{ST[i.s]={prices:[],digits:[],freq:new Array(10).fill(0),last:nul
 document.getElementById(‘tokenInput’).value=’’;try{sessionStorage.removeItem(‘ds_token’);sessionStorage.removeItem(‘ds_expiry’);}catch(e){}
 document.getElementById(‘appShell’).style.display=‘none’;document.getElementById(‘pgLogin’).style.display=‘flex’;
 const lb=document.getElementById(‘loginBtn’);if(lb){lb.classList.remove(‘ld’);lb.textContent=‘CONNECT TO DERIV’;}hideLE();
-}function launchDash(auth){
+}function launchDash(auth){ try {
 if(userToken){const expiry=Date.now()+(24*60*60*1000);try{sessionStorage.setItem(‘ds_token’,userToken);sessionStorage.setItem(‘ds_expiry’,String(expiry));}catch(e){}}
 document.getElementById(‘pgLogin’).style.display=‘none’;document.getElementById(‘appShell’).style.display=‘flex’;navTo(‘ai’);
 if(auth){
@@ -1540,7 +1540,7 @@ const name=auth.fullname||auth.email||‘Trader’;const lid=auth.loginid||’�
 document.getElementById(‘acctBadge’).style.display=‘flex’;document.getElementById(‘acctAvatar’).textContent=name.charAt(0).toUpperCase();
 document.getElementById(‘acctName’).textContent=name.length>18?name.slice(0,18)+’…’:name;document.getElementById(‘acctId’).textContent=lid;
 document.getElementById(‘balRow’).style.display=‘block’;document.getElementById(‘balVal’).textContent=auth.balance!==undefined?parseFloat(auth.balance).toFixed(2):’–’;
-document.getElementById(‘balCur’).textContent=(auth.currency||‘USD’)+’ ‘+(auth.is_virtual?‘Demo’:‘Real’);document.getElementById(‘balAcct’).textContent=lid;
+document.getElementById(‘balCur’).textContent=(auth.currency||‘USD’)+’ ’+(auth.is_virtual?‘Demo’:‘Real’);document.getElementById(‘balAcct’).textContent=lid;
 document.getElementById(‘balType’).textContent=auth.is_virtual?‘Demo Account’:‘Real Account’;
 }
 AI.baseStake=parseFloat(document.getElementById(‘cfgStake’).value)||5;AI.mult=parseFloat(document.getElementById(‘cfgMult’).value)||3.6;
@@ -1548,6 +1548,7 @@ IDX.forEach(i=>{SIL.calibData[i.s]={digits:[],entropies:[]};});silUpdateBar();
 initTable();initDC();refreshLadder();refreshPowerLadder();refreshBBLadder();drawEquity();drawPowerEquity();drawBBEquity();startConn();
 setInterval(()=>{const n=new Date();document.getElementById(‘CLK’).textContent=n.toUTCString().slice(17,25);},1000);
 setInterval(()=>{if(SIL.calibrated)silUpdateBar();},5000);
+} catch(err) { alert(‘Launch error: ’ + err.message + ’ | ’ + err.stack); }
 }
 function updConn(live){const cl=document.getElementById(‘CL’);const cd=document.getElementById(‘CD’);if(cl)cl.textContent=live?‘LIVE’:‘CONNECTING’;if(cd){cd.style.background=live?‘var(–green)’:‘var(–red)’;if(live)cd.classList.add(‘on’);else cd.classList.remove(‘on’);}}
 function showErr(msg){const e=document.getElementById(‘ERR’);if(e){e.textContent=’! ’+msg;e.style.display=‘block’;}}
@@ -1638,85 +1639,108 @@ for(let d=0;d<10;d++){const pct=Math.round((s.freq[d]||0)/tot*100);const isHot=d
 }
 if(card){const lbl=document.getElementById(‘digitBufLabel’);if(lbl)lbl.textContent=s.digitBuf||100;card.classList.toggle(‘best-market’,AI.activeSym===sym&&AI.inTrade);}
 }
-function loginGo(){
-var btn=document.getElementById(‘loginBtn’);
-var inp=document.getElementById(‘tokenInput’);
-var errEl=document.getElementById(‘LE’);
-var t=(inp?inp.value:’’).trim();
-if(!t){
-if(errEl){errEl.textContent=‘Please enter your API token first’;errEl.style.display=‘block’;}
+function loginGo() {
+var token = document.getElementById(‘tokenInput’).value.trim();
+var errEl = document.getElementById(‘LE’);
+var btn = document.getElementById(‘loginBtn’);
+
+if (!token) {
+errEl.textContent = ‘Please paste your API token first’;
+errEl.style.display = ‘block’;
 return;
 }
-if(t.length<10){
-if(errEl){errEl.textContent=‘Token too short - check you copied the full token’;errEl.style.display=‘block’;}
+if (token.length < 10) {
+errEl.textContent = ‘Token too short - make sure you copied the full token’;
+errEl.style.display = ‘block’;
 return;
 }
-if(errEl)errEl.style.display=‘none’;
-if(btn){btn.textContent=’CONNECTING… ’;btn.disabled=true;btn.style.opacity=‘0.7’;}
-userToken=t;
-var sock;
-try{
-sock=new WebSocket(‘wss://ws.binaryws.com/websockets/v3?app_id=1089’);
-}catch(err){
-if(btn){btn.textContent=‘CONNECT TO DERIV’;btn.disabled=false;btn.style.opacity=‘1’;}
-if(errEl){errEl.textContent=‘Cannot connect. Check your internet connection.’;errEl.style.display=‘block’;}
-userToken=null;
+
+errEl.style.display = ‘none’;
+btn.textContent = ‘CONNECTING…’;
+btn.disabled = true;
+btn.style.opacity = ‘0.6’;
+
+var socket;
+var done = false;
+
+try {
+socket = new WebSocket(‘wss://ws.binaryws.com/websockets/v3?app_id=1089’);
+} catch (e) {
+errEl.textContent = ’Cannot connect: ’ + e.message;
+errEl.style.display = ‘block’;
+btn.textContent = ‘CONNECT TO DERIV’;
+btn.disabled = false;
+btn.style.opacity = ‘1’;
 return;
 }
-var resolved=false;
-var timer=setTimeout(function(){
-if(resolved)return;
-resolved=true;
-try{sock.close();}catch(e2){}
-if(btn){btn.textContent=‘CONNECT TO DERIV’;btn.disabled=false;btn.style.opacity=‘1’;}
-if(errEl){errEl.textContent=‘Connection timed out. Check your internet and try again.’;errEl.style.display=‘block’;}
-userToken=null;
-},15000);
-sock.onopen=function(){
-if(btn)btn.textContent=‘AUTHORIZING…’;
-sock.send(JSON.stringify({authorize:t}));
+
+var timer = setTimeout(function() {
+if (done) return;
+done = true;
+try { socket.close(); } catch(e) {}
+errEl.textContent = ‘Timed out. Check your internet and try again.’;
+errEl.style.display = ‘block’;
+btn.textContent = ‘CONNECT TO DERIV’;
+btn.disabled = false;
+btn.style.opacity = ‘1’;
+}, 15000);
+
+socket.onopen = function() {
+btn.textContent = ‘AUTHORIZING…’;
+socket.send(JSON.stringify({ authorize: token }));
 };
-sock.onmessage=function(ev){
-var msg;
-try{msg=JSON.parse(ev.data);}catch(e2){return;}
-if(msg.msg_type!==‘authorize’)return;
+
+socket.onmessage = function(event) {
+var data;
+try { data = JSON.parse(event.data); } catch(e) { return; }
+if (data.msg_type !== ‘authorize’) return;
 clearTimeout(timer);
-resolved=true;
-try{sock.close();}catch(e2){}
-if(msg.error){
-if(btn){btn.textContent=‘CONNECT TO DERIV’;btn.disabled=false;btn.style.opacity=‘1’;}
-if(errEl){errEl.textContent=’Token error: ’+(msg.error.message||‘Invalid token. Make sure it has Read + Trade scope.’);errEl.style.display=‘block’;}
-userToken=null;
+done = true;
+try { socket.close(); } catch(e) {}
+if (data.error) {
+errEl.textContent = ’Token error: ’ + (data.error.message || ‘Invalid token. Check Read + Trade scope.’);
+errEl.style.display = ‘block’;
+btn.textContent = ‘CONNECT TO DERIV’;
+btn.disabled = false;
+btn.style.opacity = ‘1’;
 return;
 }
-launchDash(msg.authorize);
+userToken = token;
+launchDash(data.authorize);
 };
-sock.onerror=function(){
-if(resolved)return;
+
+socket.onerror = function() {
+if (done) return;
 clearTimeout(timer);
-resolved=true;
-try{sock.close();}catch(e2){}
-if(btn){btn.textContent=‘CONNECT TO DERIV’;btn.disabled=false;btn.style.opacity=‘1’;}
-if(errEl){errEl.textContent=‘Connection failed. Check your internet and try again.’;errEl.style.display=‘block’;}
-userToken=null;
+done = true;
+try { socket.close(); } catch(e) {}
+errEl.textContent = ‘Connection error. Check your internet and try again.’;
+errEl.style.display = ‘block’;
+btn.textContent = ‘CONNECT TO DERIV’;
+btn.disabled = false;
+btn.style.opacity = ‘1’;
 };
-sock.onclose=function(){
-if(resolved)return;
+
+socket.onclose = function() {
+if (done) return;
 clearTimeout(timer);
-resolved=true;
-if(btn){btn.textContent=‘CONNECT TO DERIV’;btn.disabled=false;btn.style.opacity=‘1’;}
-if(errEl){errEl.textContent=‘Connection closed unexpectedly. Try again.’;errEl.style.display=‘block’;}
-userToken=null;
+done = true;
+errEl.textContent = ‘Connection closed. Try again.’;
+errEl.style.display = ‘block’;
+btn.textContent = ‘CONNECT TO DERIV’;
+btn.disabled = false;
+btn.style.opacity = ‘1’;
 };
 }
-function guestGo(){
-isGuest=true;
-userToken=null;
-try{
+
+function guestGo() {
+isGuest = true;
+userToken = null;
+try {
 launchDash(null);
-}catch(err){
-document.getElementById(‘pgLogin’).style.display=‘none’;
-document.getElementById(‘appShell’).style.display=‘flex’;
+} catch(e) {
+document.getElementById(‘pgLogin’).style.display = ‘none’;
+document.getElementById(‘appShell’).style.display = ‘flex’;
 }
 }
 
